@@ -1,5 +1,5 @@
-title: "Amazon S3 Bucket Sync"
-summary: "Amazon S3 Bucket Sync"
+title: 'Amazon S3 Bucket Sync'
+summary: 'Amazon S3 Bucket Sync'
 description: |-
   Amazon S3 Bucket Sync step syncs the given local folder with an S3 bucket.
 
@@ -21,54 +21,54 @@ is_always_run: false
 is_skippable: false
 deps:
   brew:
-  - name: awscli
+    - name: awscli
   apt_get:
-  - name: awscli
-run_if: ""
+    - name: awscli
+run_if: ''
 inputs:
-  - access_key_id: ""
+  - access_key_id: ''
     opts:
-      title: "AWS Access Key"
-      summary: ""
-      description: ""
+      title: 'AWS Access Key'
+      summary: ''
+      description: ''
       is_required: true
       is_expand: true
       is_sensitive: true
-  - secret_access_key: ""
+  - secret_access_key: ''
     opts:
-      title: "AWS Secret Key"
-      summary: ""
-      description: ""
+      title: 'AWS Secret Key'
+      summary: ''
+      description: ''
       is_required: true
       is_expand: true
       is_sensitive: true
-  - upload_bucket: ""
+  - upload_bucket: ''
     opts:
-      title: "S3 Bucket Name"
-      summary: ""
-      description: ""
+      title: 'S3 Bucket Name'
+      summary: ''
+      description: ''
       is_required: true
-  - upload_local_path: ""
+  - upload_local_path: ''
     opts:
-      title: "Local path to upload"
-      summary: ""
+      title: 'Local path to upload'
+      summary: ''
       description: |
         If you want to sync only the content of
         the folder but don't want to create the folder, then you
         should append a slash at the end of the path. For example: ./folder/
       is_required: true
-  - acl_control: "private"
+  - acl_control: 'private'
     opts:
-      title: "Access Control"
-      summary: ""
-      description: ""
+      title: 'Access Control'
+      summary: ''
+      description: ''
       value_options:
-      - "public-read"
-      - "private"
+        - 'public-read'
+        - 'private'
       is_required: true
-  - set_acl_only_on_changed_objets: "true"
+  - set_acl_only_on_changed_objets: 'true'
     opts:
-      title: "Set ACL only on changed objects?"
+      title: 'Set ACL only on changed objects?'
       summary: |-
         If it is set to "true", it'll only set ACL for changed objects, which is
         way faster to do than to check and set every objects' ACL.
@@ -76,15 +76,25 @@ inputs:
         Generally, you can keep this option on "yes" to get a speed boost,
         and you should only change it to "false" if you changed the
         ACL option (to set every object's ACL to the specified one).
-      description: ""
+      description: ''
       value_options:
-        - "true"
-        - "false"
+        - 'true'
+        - 'false'
       is_required: true
-  - aws_region: ""
+  - delete: 'true'
     opts:
-      title: "AWS Region"
-      summary: ""
+      title: 'Delete files at destination that are not in the source?'
+      summary: |-
+        If it is set to "true", files that exist in the destination but not in the source are deleted during sync.
+      description: ''
+      value_options:
+        - 'true'
+        - 'false'
+      is_required: true
+  - aws_region: ''
+    opts:
+      title: 'AWS Region'
+      summary: ''
       description: |
         Here you can specify a different AWS region of the bucket. You can leave
         it empty to use the default config/env setting.
