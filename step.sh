@@ -143,10 +143,10 @@ s3_url="s3://${upload_bucket}"
 export AWS_ACCESS_KEY_ID="${access_key_id}"
 export AWS_SECRET_ACCESS_KEY="${secret_access_key}"
 
-flags = "--acl ${aclcmd}"
+flags="--acl ${aclcmd}"
 
 if [[ "${delete}" == "true" ]] ; then
-  flags = "--delete ${flags}"
+  flags="--delete ${flags}"
 fi
 
 # do a sync -> delete no longer existing objects if flag is set
